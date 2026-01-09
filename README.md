@@ -26,7 +26,7 @@ Due to the nature of WebGL builds, some browsers may not allow two players, full
 4. Open the project using Unity 6.0 LTS.
 
 ## Running the Game in Unity
-Open the main scene and press play.
+Open FlatScene from the Scenes folder and press play.
 
 ## Usage
 ### Controls
