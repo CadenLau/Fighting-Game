@@ -80,4 +80,9 @@ public class Special : MonoBehaviour
         // float duration = 360f / Mathf.Abs(angularSpeed);
         // owner.GetComponent<PlayerScript>().SetDodgingTrue(duration);
     }
+
+    public GameObject GetOwner()
+    {
+        return owner;
+    }
 }

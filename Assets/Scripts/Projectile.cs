@@ -21,9 +21,21 @@ public class Projectile : MonoBehaviour
         if (owner != null && collision.gameObject == owner)
             return;
 
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Special"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Projectile"))
+        {
+            var melee = collision.gameObject.GetComponent<Melee>();
+            var projectile = collision.gameObject.GetComponent<Projectile>();
+            if (melee != null && melee.GetOwner() != owner) Destroy(gameObject);
+            else if (projectile != null && projectile.GetOwner() != owner) Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Special"))
+        {
+            var special = collision.gameObject.GetComponent<Special>();
+            if (special != null && special.GetOwner() != owner) Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
@@ -45,5 +57,10 @@ public class Projectile : MonoBehaviour
 
         if (TryGetComponent<SpriteRenderer>(out var sr))
             sr.color = owner.GetComponent<SpriteRenderer>().color;
+    }
+
+    public GameObject GetOwner()
+    {
+        return owner;
     }
 }
