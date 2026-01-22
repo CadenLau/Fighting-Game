@@ -302,7 +302,7 @@ MonoBehaviour:
   groundDecel: 600
   airAccel: 120
   airDecel: 20
-  actionRecovery: 0.55
+  actionRecovery: 0.5
   inputBufferTime: 0.15
   dashSpeed: 15
   maxDashSpeed: 25
@@ -315,8 +315,6 @@ MonoBehaviour:
   gravityScalingFactor: 1.35
   aimPointer: {fileID: 4435348571041776787}
   aimPointerDistance: 0.4
-  dodgeDuration: 0.3
-  dodgeAlpha: 0.3
 --- !u!1001 &5289824208098584698
 PrefabInstance:
   m_ObjectHideFlags: 0

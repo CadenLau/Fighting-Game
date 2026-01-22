@@ -77,7 +77,7 @@ public class Special : MonoBehaviour
         if (TryGetComponent<SpriteRenderer>(out var sr))
             sr.color = owner.GetComponent<SpriteRenderer>().color;
 
-        float duration = 360f / Mathf.Abs(angularSpeed);
-        owner.GetComponent<PlayerScript>().SetDodgingTrue(duration);
+        // float duration = 360f / Mathf.Abs(angularSpeed);
+        // owner.GetComponent<PlayerScript>().SetDodgingTrue(duration);
     }
 }

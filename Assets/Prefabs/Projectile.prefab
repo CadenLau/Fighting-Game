@@ -106,10 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab5efeba70cf4494bfe5de6b33dd889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 6
+  speed: 8
   lifetime: 3
   damage: 4
-  knockbackStrength: 6
+  knockbackStrength: 10
   rb: {fileID: 8883692140938737114}
 --- !u!50 &8883692140938737114
 Rigidbody2D:

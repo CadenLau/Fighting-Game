@@ -67,9 +67,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float aimPointerDistance = 0.4f;
     private Vector2 aimDirection = Vector2.right;
 
-    [Header("Dodge")]
-    [SerializeField] private float dodgeDuration = 0.3f;
-    [SerializeField] private float dodgeAlpha = 0.5f;
+    // [Header("Dodge")]
+    // [SerializeField] private float dodgeDuration = 0.3f;
+    // [SerializeField] private float dodgeAlpha = 0.5f;
 
     private bool isAlive = true;
 
@@ -93,7 +93,7 @@ public class PlayerScript : MonoBehaviour
         playerInput.actions["Shoot"].performed += Shoot;
         playerInput.actions["Melee"].performed += Melee;
         playerInput.actions["Special"].performed += Special;
-        playerInput.actions["Dodge"].performed += Dodge;
+        // playerInput.actions["Dodge"].performed += Dodge;
     }
 
     private void Start()
@@ -204,6 +204,11 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (groundColliders.Contains(collision.collider)) dashCount = dashMaxCount;
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
@@ -222,7 +227,7 @@ public class PlayerScript : MonoBehaviour
         playerInput.actions["Shoot"].performed -= Shoot;
         playerInput.actions["Melee"].performed -= Melee;
         playerInput.actions["Special"].performed -= Special;
-        playerInput.actions["Dodge"].performed -= Dodge;
+        // playerInput.actions["Dodge"].performed -= Dodge;
     }
 
     private void OnDestroy()
@@ -233,7 +238,7 @@ public class PlayerScript : MonoBehaviour
             playerInput.actions["Shoot"].performed -= Shoot;
             playerInput.actions["Melee"].performed -= Melee;
             playerInput.actions["Special"].performed -= Special;
-            playerInput.actions["Dodge"].performed -= Dodge;
+            // playerInput.actions["Dodge"].performed -= Dodge;
         }
     }
     #endregion
@@ -323,28 +328,28 @@ public class PlayerScript : MonoBehaviour
         });
     }
 
-    private void Dodge(InputAction.CallbackContext obj)
-    {
-        TryPerformAction(() =>
-        {
-            SetDodgingTrue(dodgeDuration);
-        });
-    }
+    // private void Dodge(InputAction.CallbackContext obj)
+    // {
+    //     TryPerformAction(() =>
+    //     {
+    //         SetDodgingTrue(dodgeDuration);
+    //     });
+    // }
 
 
-    public void SetDodgingTrue(float duration)
-    {
-        gameObject.layer = LayerMask.NameToLayer("PlayerDodging");
-        SetAlpha(dodgeAlpha);
-        CancelInvoke(nameof(SetDodgingFalse)); // Safeguard
-        Invoke(nameof(SetDodgingFalse), duration);
-    }
+    // public void SetDodgingTrue(float duration)
+    // {
+    //     gameObject.layer = LayerMask.NameToLayer("PlayerDodging");
+    //     SetAlpha(dodgeAlpha);
+    //     CancelInvoke(nameof(SetDodgingFalse)); // Safeguard
+    //     Invoke(nameof(SetDodgingFalse), duration);
+    // }
 
-    private void SetDodgingFalse()
-    {
-        gameObject.layer = LayerMask.NameToLayer("Player");
-        SetAlpha(1f);
-    }
+    // private void SetDodgingFalse()
+    // {
+    //     gameObject.layer = LayerMask.NameToLayer("Player");
+    //     SetAlpha(1f);
+    // }
 
     private void SetAlpha(float alpha)
     {
@@ -485,7 +490,7 @@ public class PlayerScript : MonoBehaviour
         aimDirection = Vector2.right;
         if (flipped) aimDirection = new Vector2(-aimDirection.x, aimDirection.y);
 
-        SetDodgingFalse();
+        // SetDodgingFalse();
         EndDash();
         actionTimer = 0f;
         bufferedAction = null;

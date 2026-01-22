@@ -33,7 +33,6 @@ Open FlatScene from the Scenes folder and press play.
 | Key | Action |
 | ----------- | ----------- |
 | Left Bumper | Dash |
-| Left Trigger | Dodge |
 | Right Bumper | Melee |
 | Right Trigger | Shoot |
 | Left Stick | Move |
